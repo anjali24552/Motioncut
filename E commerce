@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #185a9d;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #185a9d;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: #43cea2;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .product-container {
+            display: flex;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .product-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.5s;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #185a9d;
+            font-weight: 800;
+        }
+
+        .product-price {
+            font-size: 28px;
+            color: #43cea2;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+
+        .product-description {
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(45deg, #185a9d, #43cea2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .reviews {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .review {
+            border-bottom: 2px solid rgba(67, 206, 162, 0.2);
+            padding: 20px 0;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .related-products {
+            margin-top: 40px;
+        }
+
+        .related-products h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .related-product {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .related-product:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .related-product h3 {
+            color: #185a9d;
+            margin: 10px 0;
+        }
+
+        .related-product p {
+            color: #43cea2;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .product-image img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">TechGear</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" alt="Headphones">
+            </div>
+            <div class="product-details">
+                <h1 class="product-title">Premium Wireless Headphones</h1>
+                <p class="product-price">$299.99</p>
+                <div class="product-description">
+                    <p>Immerse yourself in pure audio excellence with our premium wireless headphones. Experience music like never before with:</p>
+                    <br>
+                    <p>• Studio-Quality Sound with Deep Bass</p>
+                    <p>• Active Noise Cancellation Technology</p>
+                    <p>• 40-hour Battery Life</p>
+                    <p>• Ultra-Comfortable Memory Foam Padding</p>
+                    <p>• Voice Assistant Integration</p>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <h3>Incredible Sound Quality!</h3>
+                <p>These headphones completely transformed my music experience. The sound clarity is outstanding!</p>
+            </div>
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <h3>Best Purchase Ever</h3>
+                <p>The noise cancellation is perfect for my daily commute. Battery life is impressive too!</p>
+            </div>
+        </div>
+
+        <div class="related-products">
+            <h2>You May Also Like</h2>
+            <div class="related-grid">
+                <div class="related-product">
+                    <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500&q=80" alt="Wireless Earbuds">
+                    <h3>Wireless Earbuds Pro</h3>
+                    <p>$149.99</p>
+                </div>
+                <div class="related-product">
+                    <img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=500&q=80" alt="Gaming Headset">
+                    <h3>Gaming Headset Elite</h3>
+                    <p>$199.99</p>
+                </div>
+                <div class="related-product">
+                    <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&q=80" alt="Sport Earphones">
+                    <h3>Sport Earphones</h3>
+                    <p>$79.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
